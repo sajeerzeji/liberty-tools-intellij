@@ -174,10 +174,8 @@ public abstract class AbstractDiagnosticsCollector implements DiagnosticsCollect
      *         false otherwise.
      */
     protected static boolean doesImplementInterfaces(PsiClass type, String interfaceFQName) {
-        for (PsiClass iface : type.getInterfaces()) {
-            if (interfaceFQName.equals(iface.getQualifiedName())) return true;
-        }
-        return false;
+        return Arrays.stream(type.getInterfaces())
+                .anyMatch(iface -> interfaceFQName.equals(iface.getQualifiedName()));
     }
 
     /**
@@ -190,10 +188,8 @@ public abstract class AbstractDiagnosticsCollector implements DiagnosticsCollect
      *         false otherwise.
      */
     protected static boolean doesImplementInterfaces(PsiClass type, String[] interfaceFQNames) {
-        for (String interfaceFQName : interfaceFQNames) {
-            if (doesImplementInterfaces(type, interfaceFQName)) return true;
-        }
-        return false;
+        return interfaceFQNames != null && Arrays.stream(interfaceFQNames)
+                .anyMatch(interfaceFQName -> doesImplementInterfaces(type, interfaceFQName));
     }
 
     /**
