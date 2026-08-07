@@ -27,6 +27,7 @@ public class PersistenceConstants {
     public static final String MAPKEY = "jakarta.persistence.MapKey";
     public static final String MAPKEYCLASS = "jakarta.persistence.MapKeyClass";
     public static final String MAPKEYJOINCOLUMN = "jakarta.persistence.MapKeyJoinColumn";
+    public static final String MAPKEYENUMERATED = "jakarta.persistence.MapKeyEnumerated";
     public static final String MAPKEYTEMPORAL = "jakarta.persistence.MapKeyTemporal";
     public static final String CONVERT = "jakarta.persistence.Convert";
     public static final String ONE_TO_ONE = "jakarta.persistence.OneToOne";
@@ -37,6 +38,9 @@ public class PersistenceConstants {
     public static final String TEMPORAL = "jakarta.persistence.Temporal";
     public static final String VERSION = "jakarta.persistence.Version";
     public static final String TEMPORAL_TYPE = "jakarta.persistence.TemporalType";
+
+    /* Type Constants */
+    public static final String MAP_INTERFACE_FQDN = "java.util.Map";
 
     /* Annotation Fields */
     public static final String NAME = "name";
@@ -64,9 +68,13 @@ public class PersistenceConstants {
     public static final String DIAGNOSTIC_CODE_VERSION_IN_HIERARCHY = "VersionAnnotationInHierarchy";
     public static final String DIAGNOSTIC_CODE_INVALID_VERSION_TYPE = "InvalidVersionFieldOrPropertyType";
     public static final String DIAGNOSTIC_CODE_INVALID_ID_TYPE = "InvalidIdType";
+    public static final String DIAGNOSTIC_CODE_MULTIPLE_EMBEDDED_ID = "MultipleEmbeddedIdAnnotations";
+    public static final String DIAGNOSTIC_CODE_MIXED_IDENTIFIER = "MixedIdentifierAnnotations";
 
 
     /* MapKey Codes */
+    public static final String DIAGNOSTIC_CODE_MAPKEYENUMERATED_NON_MAP = "MapKeyEnumeratedOnNonMapType";
+    public static final String DIAGNOSTIC_CODE_MAPKEYENUMERATED_NON_ENUM = "MapKeyEnumeratedOnNonEnumType";
     public static final String DIAGNOSTIC_CODE_INVALID_ANNOTATION = "RemoveMapKeyorMapKeyClass";
     public static final String DIAGNOSTIC_CODE_MISSING_ATTRIBUTES = "SupplyAttributesToAnnotations";
     public static final String DIAGNOSTIC_CODE_INVALID_ACCESS_SPECIFIER = "InvalidMethodAccessSpecifier";
@@ -81,12 +89,12 @@ public class PersistenceConstants {
     public static final String DIAGNOSTIC_CODE_CONVERT_ON_RESTRICTED_TARGET = "InvalidConvertAnnotationOnRestrictedTarget";
     public static final String DIAGNOSTIC_CODE_CONVERT_MULTIPLE_ON_SAME_ATTRIBUTE = "MultipleConvertAnnotationOnSameAttribute";
 
-    public final static String[] SET_OF_PERSISTENCE_ANNOTATIONS = {MAPKEY, MAPKEYCLASS, MAPKEYJOINCOLUMN};
+    public final static String[] SET_OF_PERSISTENCE_ANNOTATIONS = {MAPKEY, MAPKEYCLASS, MAPKEYJOINCOLUMN, MAPKEYENUMERATED};
     public static final String[] SET_OF_PRIMARY_KEY_DATE_ANNOTATIONS = { ID, TEMPORAL };
     public static final Set<String> SET_OF_VALID_VERSION_TYPES = Set.of(
             "int", "short", "long", "java.lang.Integer",
             "java.lang.Short", "java.lang.Long", "java.sql.Timestamp");
-    
+
     /* Valid @Id type sets */
     private static final Set<String> VALID_ID_PRIMITIVES = Set.of(
             "int", "long", "short", "byte", "char", "boolean", "float", "double");
@@ -98,14 +106,14 @@ public class PersistenceConstants {
     private static final Set<String> VALID_ID_BIG_NUMBERS = Set.of(
             "java.math.BigDecimal", "java.math.BigInteger");
     private static final Set<String> VALID_ID_STRING = Set.of("java.lang.String");
-    
+
     // Combined set for easy validation using streams
     public static final Set<String> SET_OF_VALID_ID_TYPES = Stream.of(
             VALID_ID_PRIMITIVES, VALID_ID_WRAPPERS, VALID_ID_DATES,
             VALID_ID_BIG_NUMBERS, VALID_ID_STRING)
             .flatMap(Set::stream)
             .collect(Collectors.toUnmodifiableSet());
-    
+
     public static final String UTIL_DATE = "java.util.Date";
     public static final String UTIL_CALENDAR = "java.util.Calendar";
     public static final String TEMPORAL_TYPE_DATE = "TemporalType.DATE";
