@@ -27,6 +27,7 @@ public class PersistenceConstants {
     public static final String MAPKEY = "jakarta.persistence.MapKey";
     public static final String MAPKEYCLASS = "jakarta.persistence.MapKeyClass";
     public static final String MAPKEYJOINCOLUMN = "jakarta.persistence.MapKeyJoinColumn";
+    public static final String MAPKEYENUMERATED = "jakarta.persistence.MapKeyEnumerated";
     public static final String MAPKEYTEMPORAL = "jakarta.persistence.MapKeyTemporal";
     public static final String NAMEDENTITYGRAPH = "jakarta.persistence.NamedEntityGraph";
     public static final String NAMEDENTITYGRAPHS = "jakarta.persistence.NamedEntityGraphs";
@@ -37,6 +38,9 @@ public class PersistenceConstants {
     public static final String TEMPORAL = "jakarta.persistence.Temporal";
     public static final String VERSION = "jakarta.persistence.Version";
     public static final String TEMPORAL_TYPE = "jakarta.persistence.TemporalType";
+
+    /* Type Constants */
+    public static final String MAP_INTERFACE_FQDN = "java.util.Map";
 
     /* Annotation Fields */
     public static final String NAME = "name";
@@ -57,6 +61,8 @@ public class PersistenceConstants {
     public static final String DIAGNOSTIC_CODE_VERSION_IN_HIERARCHY = "VersionAnnotationInHierarchy";
     public static final String DIAGNOSTIC_CODE_INVALID_VERSION_TYPE = "InvalidVersionFieldOrPropertyType";
     public static final String DIAGNOSTIC_CODE_INVALID_ID_TYPE = "InvalidIdType";
+    public static final String DIAGNOSTIC_CODE_MULTIPLE_EMBEDDED_ID = "MultipleEmbeddedIdAnnotations";
+    public static final String DIAGNOSTIC_CODE_MIXED_IDENTIFIER = "MixedIdentifierAnnotations";
     public static final String DIAGNOSTIC_CODE_NAMED_ENTITY_GRAPH_ON_NON_ENTITY = "NamedEntityGraphOnNonEntityClass";
     public static final String DIAGNOSTIC_CODE_NAMED_ENTITY_GRAPHS_ON_NON_ENTITY = "NamedEntityGraphsOnNonEntityClass";
     public static final String DIAGNOSTIC_CODE_NAMED_QUERY_ON_INVALID_CLASS = "NamedQueryOnInvalidClass";
@@ -66,6 +72,8 @@ public class PersistenceConstants {
 
 
     /* MapKey Codes */
+    public static final String DIAGNOSTIC_CODE_MAPKEYENUMERATED_NON_MAP = "MapKeyEnumeratedOnNonMapType";
+    public static final String DIAGNOSTIC_CODE_MAPKEYENUMERATED_NON_ENUM = "MapKeyEnumeratedOnNonEnumType";
     public static final String DIAGNOSTIC_CODE_INVALID_ANNOTATION = "RemoveMapKeyorMapKeyClass";
     public static final String DIAGNOSTIC_CODE_MISSING_ATTRIBUTES = "SupplyAttributesToAnnotations";
     public static final String DIAGNOSTIC_CODE_INVALID_ACCESS_SPECIFIER = "InvalidMethodAccessSpecifier";
@@ -75,7 +83,7 @@ public class PersistenceConstants {
     public static final String DIAGNOSTIC_CODE_INVALID_TYPE = "InvalidTypeOfField";
     public static final String DIAGNOSTIC_CODE_INVALID_MAPKEYTEMPORAL_TYPE = "MapKeyTemporalNotOnTemporalType";
 
-    public final static String[] SET_OF_PERSISTENCE_ANNOTATIONS = {MAPKEY, MAPKEYCLASS, MAPKEYJOINCOLUMN};
+    public final static String[] SET_OF_PERSISTENCE_ANNOTATIONS = {MAPKEY, MAPKEYCLASS, MAPKEYJOINCOLUMN, MAPKEYENUMERATED};
     public static final String[] SET_OF_PRIMARY_KEY_DATE_ANNOTATIONS = { ID, TEMPORAL };
     public static final Set<String> SET_OF_VALID_VERSION_TYPES = Set.of(
             "int", "short", "long", "java.lang.Integer",

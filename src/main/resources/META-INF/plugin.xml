@@ -445,6 +445,15 @@
 
         <javaCodeActionParticipant kind="quickfix"
                                    group="jakarta"
+                                   targetDiagnostic="jakarta-persistence#MultipleEmbeddedIdAnnotations"
+                                   implementationClass="io.openliberty.tools.intellij.lsp4jakarta.lsp4ij.persistence.RemoveAnnotationConflictForIdentifiersQuickFix"/>
+        <javaCodeActionParticipant kind="quickfix"
+                                   group="jakarta"
+                                   targetDiagnostic="jakarta-persistence#MixedIdentifierAnnotations"
+                                   implementationClass="io.openliberty.tools.intellij.lsp4jakarta.lsp4ij.persistence.RemoveAnnotationConflictForIdentifiersQuickFix"/>
+
+        <javaCodeActionParticipant kind="quickfix"
+                                   group="jakarta"
                                    targetDiagnostic="jakarta-persistence#NamedEntityGraphOnNonEntityClass"
                                    implementationClass="io.openliberty.tools.intellij.lsp4jakarta.lsp4ij.persistence.RemoveNamedAnnotationQuickFix"/>
         <javaCodeActionParticipant kind="quickfix"
@@ -669,6 +678,10 @@
                                    group="jakarta"
                                    targetDiagnostic="jakarta-cdi#InvalidNamedAnnotationOnNonFieldInjectionPoint"
                                    implementationClass="io.openliberty.tools.intellij.lsp4jakarta.lsp4ij.cdi.InsertNamedValueAttributeQuickFix"/>
+        <javaCodeActionParticipant kind="quickfix"
+                                   group="jakarta"
+                                   targetDiagnostic="jakarta-cdi#InvalidSpecializedBeanWithNamedAnnotation"
+                                   implementationClass="io.openliberty.tools.intellij.lsp4jakarta.lsp4ij.cdi.RemoveNamedFromSpecializedBeanQuickFix"/>
 
         <!-- Interceptor -->
         <javaCodeActionParticipant kind="quickfix"
