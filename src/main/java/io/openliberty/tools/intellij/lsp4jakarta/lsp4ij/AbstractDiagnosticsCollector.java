@@ -167,7 +167,8 @@ public abstract class AbstractDiagnosticsCollector implements DiagnosticsCollect
 
     /**
      * Returns true if the given Java class implements the given interface and
-     * false otherwise.
+     * false otherwise. Checks the full inheritance hierarchy, so inherited
+     * implementations (via a superclass) are also recognised.
      *
      * @param type            Java class.
      * @param interfaceFQName fully qualified name of the interface.
@@ -175,8 +176,7 @@ public abstract class AbstractDiagnosticsCollector implements DiagnosticsCollect
      *         false otherwise.
      */
     protected static boolean doesImplementInterfaces(PsiClass type, String interfaceFQName) {
-        return Arrays.stream(type.getInterfaces())
-                .anyMatch(iface -> interfaceFQName.equals(iface.getQualifiedName()));
+        return InheritanceUtil.isInheritor(type, interfaceFQName);
     }
 
     /**
