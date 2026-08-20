@@ -87,4 +87,20 @@ public class JakartaPersistenceAttributeConverterTest extends BaseJakartaTest {
 
         assertJavaDiagnostics(diagnosticsParams, utils);
     }
+
+    @Test
+    public void converterInheritedAttributeConverterNoDiagnostic() throws Exception {
+        Module module = createMavenModule(new File("src/test/resources/projects/maven/jakarta-sample"));
+        IPsiUtils utils = PsiUtilsLSImpl.getInstance(getProject());
+
+        VirtualFile javaFile = LocalFileSystem.getInstance().refreshAndFindFileByPath(ModuleUtilCore.getModuleDirPath(module)
+                + "/src/main/java/io/openliberty/sample/jakarta/persistence/ConverterInheritedAttributeConverter.java");
+        String uri = VfsUtilCore.virtualToIoFile(javaFile).toURI().toString();
+
+        JakartaJavaDiagnosticsParams diagnosticsParams = new JakartaJavaDiagnosticsParams();
+        diagnosticsParams.setUris(Arrays.asList(uri));
+
+        // No diagnostic expected — AttributeConverter is inherited via AbstractBaseAttributeConverter
+        assertJavaDiagnostics(diagnosticsParams, utils);
+    }
 }
